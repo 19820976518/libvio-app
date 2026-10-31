@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="LIBVIO" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>LIBVIO</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="bg-glow"></div>
+
+  <main class="container">
+    <div class="logo">
+      <div class="play-triangle"></div>
+      <h1>LIBVIO</h1>
+      <p class="tagline">无广告影视 · 多线路自动切换</p>
+    </div>
+
+    <button id="continueBtn" class="btn btn-primary hidden">
+      <span class="btn-label">继续观看</span>
+      <span id="continueLine" class="btn-sub"></span>
+    </button>
+
+    <div id="lineGroup" class="line-group">
+      <p class="group-title">选择入口</p>
+      <div class="grid">
+        <button class="btn btn-line" data-url="https://libviogroup.github.io">
+          <span class="btn-label">官方发布页</span>
+          <span class="btn-sub">GitHub 托管 · 最稳</span>
+        </button>
+        <button class="btn btn-line" data-url="https://www.libvio.app">
+          <span class="btn-label">发布页 · 主</span>
+          <span class="btn-sub">libvio.app</span>
+        </button>
+        <button class="btn btn-line" data-url="https://libvio.host">
+          <span class="btn-label">备用线路 A</span>
+          <span class="btn-sub">libvio.host</span>
+        </button>
+        <button class="btn btn-line" data-url="https://libvio.mov">
+          <span class="btn-label">备用线路 B</span>
+          <span class="btn-sub">libvio.mov</span>
+        </button>
+        <button class="btn btn-line" data-url="https://www.libviofabu.com">
+          <span class="btn-label">发布页 · C</span>
+          <span class="btn-sub">libviofabu.com</span>
+        </button>
+        <button class="btn btn-line" data-url="https://libfabu.com">
+          <span class="btn-label">发布页 · D</span>
+          <span class="btn-sub">libfabu.com</span>
+        </button>
+      </div>
+    </div>
+
+    <p class="tip">某条线路打不开就换一条，这类站点域名经常轮换属正常现象。</p>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>

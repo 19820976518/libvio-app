@@ -1,0 +1,20 @@
+{
+  "name": "libvio-app",
+  "version": "1.0.0",
+  "description": "LIBVIO iOS WebView 壳：全屏打开 LIBVIO 影视站，内置多线路切换",
+  "private": true,
+  "scripts": {
+    "assets": "capacitor-assets generate --ios",
+    "sync": "cap sync ios",
+    "open:ios": "cap open ios"
+  },
+  "dependencies": {
+    "@capacitor/app": "^6.0.0",
+    "@capacitor/core": "^6.2.0",
+    "@capacitor/ios": "^6.2.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.2.0",
+    "@capacitor/assets": "^3.0.5"
+  }
+}

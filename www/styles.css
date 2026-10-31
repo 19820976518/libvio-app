@@ -1,0 +1,166 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+html, body {
+  height: 100%;
+  background: #0b0b0f;
+  color: #f5f5f7;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Helvetica Neue", sans-serif;
+  overflow: hidden;
+}
+
+body {
+  padding:
+    calc(env(safe-area-inset-top, 20px) + 24px)
+    24px
+    calc(env(safe-area-inset-bottom, 20px) + 24px);
+}
+
+.bg-glow {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(120% 60% at 50% -10%, rgba(220, 38, 38, 0.25), transparent 60%),
+    radial-gradient(80% 50% at 80% 110%, rgba(59, 130, 246, 0.18), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.logo {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.play-triangle {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #ef4444, #f97316);
+  clip-path: polygon(20% 0, 100% 50%, 20% 100%);
+  filter: drop-shadow(0 6px 20px rgba(239, 68, 68, 0.45));
+  margin-bottom: 4px;
+}
+
+.logo h1 {
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: 8px;
+  background: linear-gradient(180deg, #ffffff 0%, #c7c7cc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tagline {
+  font-size: 14px;
+  color: #8e8e93;
+  letter-spacing: 2px;
+}
+
+.btn {
+  width: 100%;
+  border: none;
+  border-radius: 18px;
+  padding: 18px 20px;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: transform 0.1s ease, opacity 0.2s ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+  opacity: 0.85;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ef4444, #f97316);
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(239, 68, 68, 0.35);
+  padding: 22px 20px;
+}
+
+.btn-primary .btn-label {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.btn-primary .btn-sub {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.btn-line {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f5f5f7;
+}
+
+.btn-line .btn-label {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.btn-line .btn-sub {
+  font-size: 12px;
+  color: #8e8e93;
+}
+
+.line-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.group-title {
+  font-size: 12px;
+  color: #636366;
+  letter-spacing: 3px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.tip {
+  font-size: 12px;
+  color: #636366;
+  text-align: center;
+  line-height: 1.6;
+  padding: 0 12px;
+}
+
+.hidden {
+  display: none !important;
+}

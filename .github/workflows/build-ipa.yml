@@ -1,0 +1,68 @@
+name: Build iOS IPA (unsigned)
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install npm dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Add iOS platform
+        run: npx cap add ios
+
+      - name: Generate icons & splash from assets/
+        run: npx capacitor-assets generate --ios --verbose
+
+      - name: Sync web assets into iOS project
+        run: npx cap sync ios
+
+      - name: Pod install
+        working-directory: ios/App
+        run: pod install
+
+      - name: xcodebuild archive (unsigned)
+        working-directory: ios/App
+        run: |
+          set -e
+          xcodebuild archive \
+            -workspace App.xcworkspace \
+            -scheme App \
+            -configuration Release \
+            -archivePath build/App.xcarchive \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_ENTITLEMENTS="" \
+            EXPANDED_CODE_SIGN_IDENTITY=""
+
+      - name: Pack unsigned IPA
+        working-directory: ios/App
+        run: |
+          set -e
+          rm -rf build/Payload
+          mkdir -p build/Payload
+          cp -R build/App.xcarchive/Products/Applications/App.app build/Payload/
+          cd build
+          rm -f libvio-unsigned.ipa
+          zip -r libvio-unsigned.ipa Payload
+          ls -lh libvio-unsigned.ipa
+
+      - name: Upload IPA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: libvio-ipa
+          path: ios/App/build/libvio-unsigned.ipa
+          retention-days: 14
